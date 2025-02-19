@@ -26,11 +26,11 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v3
               with:
                   fetch-depth: 0
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
             - id: get-repo-values
@@ -125,7 +125,7 @@ jobs:
             #- name: Handle Failure
             #  run: |
             #      echo "<html><body><h1>Build Failure</h1><p>The build failed during one of the steps.</p>" > ./dist/index.html
-            #- uses: austenstone/job-summary@v4.0
+            #- uses: austenstone/job-summary@v3.0
             #  id: job-summary
             #  with:
             #      create-pdf: false
@@ -134,14 +134,14 @@ jobs:
             #      echo "</body></html>" >> ./dist/index.html
             # Deploy
             - name: Setup Pages
-              uses: actions/configure-pages@v4
+              uses: actions/configure-pages@v3
               if: ${{ !cancelled() }}
             - name: Upload artifact
-              uses: actions/upload-pages-artifact@v4
+              uses: actions/upload-pages-artifact@v3
               if: ${{ !cancelled() }}
               with:
                   path: "dist/"
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v4
+              uses: actions/deploy-pages@v3
               if: ${{ !cancelled() }}
